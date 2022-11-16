@@ -37,7 +37,6 @@ export const userSlice = createSlice({
         builder.addCase(fetchUsers.pending, (state, action) => {
             state.loading = true;
             state.error = null;
-
         });
         builder.addCase(fetchUsers.fulfilled, (state, action) => {
             state.loading = false;
@@ -51,5 +50,4 @@ export const userSlice = createSlice({
     }
 })
 
-export const {} = userSlice.actions
 export default userSlice.reducer;

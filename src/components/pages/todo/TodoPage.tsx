@@ -2,17 +2,16 @@ import React, {useEffect} from 'react';
 import {useAppSelector} from "../../../hooks/useAppSelector";
 import {useAppDispatch} from "../../../hooks/useAppDispatch";
 import {changePage, fetchTodos} from "../../../store/reducers/todoSlice";
-import UserCard from "../user/UserCard";
 import TodoCard from "./TodoCard";
 import UserList from "../user/UserList";
 import MyButton from "../../UI/MyButton";
 
 const TodoPage = () => {
-    const {todos, error, loading, page, limit} = useAppSelector(state => state.todos)
+    const {todos, page, limit} = useAppSelector(state => state.todos)
     const dispatch = useAppDispatch()
     useEffect(() => {
         dispatch(fetchTodos({page, limit}))
-    }, [page, limit]);
+    }, [page, limit, dispatch]);
     const pages: number[]= []
     for(let i = 0;  i < Math.floor(200/limit); i++) {
         pages[i]=i;

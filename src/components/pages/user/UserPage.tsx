@@ -7,15 +7,12 @@ import {useAppSelector} from "../../../hooks/useAppSelector";
 
 
 const UserPage = () => {
-  const { users, error, loading } = useAppSelector((state) => state.users);
-    console.log(loading)
-  const pages = [1, 2, 3, 4, 5];
+  const { users } = useAppSelector((state) => state.users);
   const dispatch = useAppDispatch()
   useEffect(() => {
   dispatch(fetchUsers())
   }, [dispatch]);
 
-console.log(users)
   return (
     <div>
       <UserList

@@ -1,7 +1,7 @@
 import React, {FC} from 'react';
 import {ITodo} from "../../../store/reducers/todoSlice";
 import styles from './TodoCard.module.css'
-import {Link, useNavigate} from "react-router-dom";
+import {useNavigate} from "react-router-dom";
 import MyButton from "../../UI/MyButton";
 
 const TodoCard: FC<ITodo> = ({id, title}) => {

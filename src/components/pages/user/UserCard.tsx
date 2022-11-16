@@ -22,7 +22,7 @@ const UserCard: FC<IUser> = ({ id, name, address, company }) => {
           Компания: <strong>{company?.name}</strong>
         </li>
       </ul>
-      <MyButton><Link to={`/${id}/todo`} style={{textDecoration: 'none'}}>Список дел</Link></MyButton>
+      <MyButton><Link to={`/${id}/todo`} style={{textDecoration: 'none', color: 'teal'}}>Список дел</Link></MyButton>
     </div>
   );
 };

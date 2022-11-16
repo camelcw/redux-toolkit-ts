@@ -10,19 +10,29 @@ interface TodoState {
     todos: ITodo[];
     loading: boolean;
     error: null | string;
+    limit:  number;
+    page: string | number;
+
 }
 
 const initialState: TodoState = {
     todos: [],
     loading: false,
     error: null,
+    page: 1,
+    limit: 20,
 };
 
 export const fetchTodos = createAsyncThunk(
     'todos/fetchTodos',
-    async function() {
+    async function ({limit, page}: {limit: number | string, page: number | string} ) {
         try {
-            const response = await axios.get('https://jsonplaceholder.typicode.com/todos');
+            const response = await axios.get('https://jsonplaceholder.typicode.com/todos', {
+                params: {
+                    _limit: limit,
+                    _page: page,
+                }
+            });
             return response.data
         } catch (e) {
             console.log(e)
@@ -38,6 +48,10 @@ export const todoSlice = createSlice({
         setTodo: (state,action) => {
             state.todos.push(action.payload.todo)
         },
+        changePage: (state, action) => {
+            state.page = action.payload
+
+        }
     },
     extraReducers: (builder) => {
         builder.addCase(fetchTodos.pending, (state, action) => {
@@ -54,6 +68,5 @@ export const todoSlice = createSlice({
         })
     }
 })
-
 export default todoSlice.reducer;
-export const {setTodo} = todoSlice.actions
+export const {setTodo, changePage} = todoSlice.actions

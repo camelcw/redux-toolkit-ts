@@ -5,6 +5,7 @@
   background: transparent;
   border-bottom: 1px solid teal;
   cursor: pointer;
+  white-space: nowrap;
 }
 
 .btn:not(last-child) {

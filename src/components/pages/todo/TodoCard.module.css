@@ -10,11 +10,10 @@
 }
 
 .todo__content {
-    font-family: 'Roboto';
     font-style: normal;
     font-weight: 400;
     font-size: 18px;
     line-height: 1;
-    color: #000000;
     list-style-type: none;
+    max-width: 70%;
 }

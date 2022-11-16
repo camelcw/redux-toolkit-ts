@@ -9,7 +9,7 @@ const TodoCard: FC<ITodo> = ({id, title}) => {
     return (
         <div className={styles.todo}>
             <div className={styles.todo__content}>
-                <MyButton onClick={() => navigate(-1)}>Back</MyButton>
+                <MyButton margin={'0 0 10px 0'} onClick={() => navigate(-1)}>Back</MyButton>
                 <div>ID: {id}</div>
                 <div>Title: {title}</div>
             </div>

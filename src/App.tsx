@@ -1,17 +1,15 @@
 import React  from 'react';
-import {Route, Routes} from "react-router-dom";
+import { useRoutes} from "react-router-dom";
 import routes from "./routes";
-import {useAppSelector} from "./hooks/useAppSelector";
+
 
 
 const App = () => {
+  const content = useRoutes(routes)
+  console.log(content)
   return (
     <div>
-        {routes.map(route =>
-            <Routes>
-                <Route path={route.path} element={route.element}/>
-            </Routes>
-        )}
+      {content}
     </div>
   );
 };

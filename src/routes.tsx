@@ -6,7 +6,7 @@ import TodoPage from "./components/pages/todo/TodoPage";
 const routes = [
     {
         path: '/',
-        element: <UserPage />
+        element: <UserPage />,
     },
     {
         path: '/:id/todo',

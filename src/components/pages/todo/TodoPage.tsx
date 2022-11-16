@@ -1,18 +1,22 @@
 import React, {useEffect} from 'react';
 import {useAppSelector} from "../../../hooks/useAppSelector";
 import {useAppDispatch} from "../../../hooks/useAppDispatch";
-import {fetchTodos} from "../../../store/reducers/todoSlice";
+import {changePage, fetchTodos} from "../../../store/reducers/todoSlice";
 import UserCard from "../user/UserCard";
 import TodoCard from "./TodoCard";
 import UserList from "../user/UserList";
+import MyButton from "../../UI/MyButton";
 
 const TodoPage = () => {
-    const {todos, error, loading} = useAppSelector(state => state.todos)
+    const {todos, error, loading, page, limit} = useAppSelector(state => state.todos)
     const dispatch = useAppDispatch()
     useEffect(() => {
-        dispatch(fetchTodos())
-    }, [dispatch]);
-
+        dispatch(fetchTodos({page, limit}))
+    }, [page, limit]);
+    const pages: number[]= []
+    for(let i = 0;  i < Math.floor(200/limit); i++) {
+        pages[i]=i;
+    }
     return (
         <div>
             <UserList
@@ -25,6 +29,9 @@ const TodoPage = () => {
                 />
                 )}
             />
+            {pages.map(page =>
+                <MyButton onClick={() => dispatch(changePage(page))} key={page}>{page+1}</MyButton>
+            )}
         </div>
     );
 };
